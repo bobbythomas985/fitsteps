@@ -2,6 +2,11 @@
 
 A beautifully crafted full-stack application designed to encourage daily movement and build healthy habits. Featuring a premium dark-mode glassmorphism UI, AI-powered motivation, and historically detailed analytics.
 
+---
+### 👤 Author
+**Bobby Thomas Thomas** ([@bobbythomas985](https://github.com/bobbythomas985))
+---
+
 ## 🚀 Features
 
 ### Core Features
@@ -61,3 +66,15 @@ npm install
 npm start
 ```
 > The frontend application will start and be accessible at `http://localhost:3000`. It expects the backend to be running concurrently on port 8000.
+
+## 🌐 Deployment
+
+This project is configured for easy deployment:
+
+- **Frontend**: [Vercel](https://vercel.com/) (using `frontend/vercel.json`)
+- **Backend**: [Railway](https://railway.app/) / [Render](https://render.com/) (using `backend/Procfile`)
+
+For detailed step-by-step deployment instructions, please refer to the **[Deployment Guide](./docs/deployment_guide.md)** (or the internal walkthrough).
+
+## 📄 License
+This project was developed for a hiring task and is for demonstration purposes.
