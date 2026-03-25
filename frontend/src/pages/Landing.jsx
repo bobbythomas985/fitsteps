@@ -23,7 +23,7 @@ function Landing({ onUserSelect }) {
       console.error('Error fetching users:', error);
       setUsers([
         { username: 'FitnessChamp', total_xp: 1200, total_steps: 15430, userId: 1 },
-        { username: 'BobbyThomas', total_xp: 950, total_steps: 12100, userId: 2 }
+        { username: 'bobbythomas985', total_xp: 950, total_steps: 12100, userId: 2 }
       ]);
     } finally {
       setLoading(false);

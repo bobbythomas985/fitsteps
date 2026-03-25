@@ -41,7 +41,7 @@ def seed_db(db: Session):
     # Create demo users
     user_data = [
         {"email": "demo@fitsteps.com", "username": "FitnessChamp"},
-        {"email": "bobbythomasthomas23@gmail.com", "username": "BobbyThomas"},
+        {"email": "bobbythomasthomas23@gmail.com", "username": "bobbythomas985"},
         {"email": "jane@fitsteps.com", "username": "RunnerJane"},
         {"email": "bob@fitsteps.com", "username": "BobTheWalker"},
     ]

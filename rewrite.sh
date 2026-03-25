@@ -1,6 +1,6 @@
 #!/bin/sh
 
-CORRECT_NAME="Bobby Thomas Thomas"
+CORRECT_NAME="bobbythomas985"
 CORRECT_EMAIL="bobbythomasthomas23@gmail.com"
 
 export GIT_COMMITTER_NAME="$CORRECT_NAME"
