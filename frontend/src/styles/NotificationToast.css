@@ -1,0 +1,55 @@
+.notification-toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 320px;
+  padding: 1.25rem;
+  display: flex;
+  gap: 1rem;
+  z-index: 2000;
+  border-left: 4px solid var(--accent-primary);
+  background: rgba(30, 41, 59, 0.95);
+}
+
+.notification-icon {
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+}
+
+.notification-content h4 {
+  margin: 0 0 4px 0;
+  color: white;
+  font-size: 1rem;
+}
+
+.notification-content p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+.notification-content small {
+  display: block;
+  margin-top: 8px;
+  color: var(--accent-secondary);
+  font-weight: 500;
+  font-style: italic;
+}
+
+.close-notify {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: 0;
+}
+
+.close-notify:hover {
+  color: white;
+}
