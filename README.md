@@ -25,28 +25,6 @@ A beautifully crafted full-stack application designed to encourage daily movemen
 | Database  | SQLite (Easily swappable with PostgreSQL) |
 | Styling   | Vanilla CSS (Custom Glassmorphic Design System) |
 
-## 🏗️ System Architecture
-
-```mermaid
-graph TD
-    subgraph Frontend (React)
-        A[Landing / Registration] --> B[User Selection]
-        B --> C[Main Dashboard]
-        C --> D[Premium Profile]
-        C --> E[Analytics & Charts]
-    end
-
-    subgraph Backend (FastAPI)
-        H[REST API Endpoints] --> I[SQLAlchemy ORM]
-        I --> J[(SQLite DB)]
-    end
-
-    A -.->|HTTP/JSON| H
-    B -.->|HTTP/JSON| H
-    C -.->|HTTP/JSON| H
-    D -.->|HTTP/JSON| H
-```
-
 ## 📋 Fast Setup Instructions
 
 ### 1. Backend Setup (FastAPI)
@@ -83,6 +61,3 @@ npm install
 npm start
 ```
 > The frontend application will start and be accessible at `http://localhost:3000`. It expects the backend to be running concurrently on port 8000.
-
----
-**Developed for the SayOne Freshers Hiring Task - 11.**
