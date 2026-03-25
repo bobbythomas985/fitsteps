@@ -79,6 +79,7 @@ class AnalyticsResponse(BaseModel):
     total_steps: int
     total_xp: int
     level: int
+    current_goal: int
 
 class LeaderboardEntry(BaseModel):
     username: str

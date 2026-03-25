@@ -226,6 +226,10 @@ def get_analytics(user_id: int, db: Session = Depends(get_db)):
     import math
     level = math.floor(math.sqrt(total_xp / 100)) + 1 if total_xp > 0 else 1
     
+    # Find current primary step goal
+    step_goal = next((g for g in goals if g.goal_type == "daily_steps"), None)
+    current_goal = step_goal.target_value if step_goal else 10000
+    
     return AnalyticsResponse(
         weekly_step_average=weekly_avg,
         best_days=best_days,
@@ -234,7 +238,8 @@ def get_analytics(user_id: int, db: Session = Depends(get_db)):
         total_activities=len(activities),
         total_steps=sum(a.steps for a in activities),
         total_xp=total_xp,
-        level=level
+        level=level,
+        current_goal=current_goal
     )
 
 def calculate_streak(activities: List[Activity]) -> int:

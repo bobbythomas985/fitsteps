@@ -72,7 +72,7 @@ function Landing({ onUserSelect }) {
                   transition={{ delay: 0.4 + index * 0.1 }}
                   whileHover={{ y: -10, scale: 1.02 }}
                   className="user-card glass-panel"
-                  onClick={() => onUserSelect(index + 1)} // Demo matching
+                  onClick={() => onUserSelect(user.userId || index + 1)}
                 >
                   <div className="user-avatar">{user.username[0]}</div>
                   <h3>{user.username}</h3>

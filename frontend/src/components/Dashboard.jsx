@@ -6,24 +6,33 @@ function Dashboard({ activities, analytics, onAddActivity }) {
     .filter(a => new Date(a.logged_at).toDateString() === new Date().toDateString())
     .reduce((sum, a) => sum + a.steps, 0);
 
-  const goal = 10000;
+  const goal = analytics?.current_goal || 10000;
   const progress = Math.min((todaySteps / goal) * 100, 100);
 
   return (
     <div className="dashboard">
       <div className="level-banner glass-panel">
         <div className="level-info">
-          <span className="level-badge">LVL {analytics?.level || 1}</span>
+          <span className="level-badge">LEVEL {analytics?.level || 1}</span>
           <div className="xp-container">
             <div className="xp-label">
               <span>XP Progress</span>
               <span>{analytics?.total_xp || 0} XP</span>
             </div>
             <div className="xp-bar-bg">
-              <div 
-                className="xp-bar-fill" 
-                style={{ width: `${(analytics?.total_xp % 100) || 0}%` }}
-              ></div>
+              {(() => {
+                const level = analytics?.level || 1;
+                const currentXP = analytics?.total_xp || 0;
+                const minXP = Math.pow(level - 1, 2) * 100;
+                const nextXP = Math.pow(level, 2) * 100;
+                const progress = Math.min(100, Math.max(0, ((currentXP - minXP) / (nextXP - minXP)) * 100));
+                return (
+                  <div 
+                    className="xp-bar-fill" 
+                    style={{ width: `${progress}%` }}
+                  ></div>
+                );
+              })()}
             </div>
           </div>
         </div>

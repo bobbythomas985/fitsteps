@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import jsPDF from 'jspdf';
-import 'jspdf-autotable';
+import autoTable from 'jspdf-autotable';
 import { 
   BarChart, 
   Bar, 
@@ -22,11 +22,13 @@ function Analytics({ userId }) {
   const [activities, setActivities] = useState([]);
 
   useEffect(() => {
-    fetchAnalytics();
-    fetchMotivation();
-    fetchSuggestions();
-    fetchActivities();
-  }, []);
+    if (userId) {
+      fetchAnalytics();
+      fetchMotivation();
+      fetchSuggestions();
+      fetchActivities();
+    }
+  }, [userId]);
 
   const fetchActivities = async () => {
     try {
@@ -70,7 +72,20 @@ function Analytics({ userId }) {
   }, [activities]);
 
   const handleExportCSV = async () => {
-    window.location.href = `${API_URL}/export/${userId}/csv`;
+    try {
+      const response = await fetch(`${API_URL}/export/${userId}/csv`);
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `fitsteps_export_${userId}.csv`;
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(url);
+    } catch (e) {
+      console.error("Export failed:", e);
+      alert("Failed to export CSV. Please try again.");
+    }
   };
 
   const handleExportPDF = () => {
@@ -94,7 +109,17 @@ function Analytics({ userId }) {
       tableRows.push(activityData);
     });
 
-    doc.autoTable(tableColumn, tableRows, { startY: 40 });
+    if (activities.length === 0) {
+      doc.text('No activity data recorded yet.', 14, 40);
+    } else {
+      autoTable(doc, {
+        head: [tableColumn],
+        body: tableRows,
+        startY: 40,
+        theme: 'grid',
+        headStyles: { fillColor: [59, 130, 246] }
+      });
+    }
     doc.save(`fitsteps_report_${new Date().getTime()}.pdf`);
   };
 
